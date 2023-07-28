@@ -1,38 +1,270 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* 기본 레이아웃 */
+body{
+    background-color: #F6F6F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gaegu', cursive;
+    /* 현재 스크린 실제 크기의 100%를 최소 높이로 가짐 */
+    min-height: 100vh;
+    margin: 0px;
+
+    box-sizing: border-box;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  @media (min-width:650px) {
+    .App {
+      width: 640px;
+    }
   }
-  to {
-    transform: rotate(360deg);
+  
+  @media (max-width:650px) {
+    .App {
+      width: 90vw;
+    }
   }
+  
+  #root {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    background : linear-gradient(90deg, snow 1px, #f0f0f0 1px);
+    background-size : 5px 5px;
+
+  }
+  
+  .App{
+    min-height: 100vh;
+    padding: 0px 20px 0px 20px;
+  }
+  
+
+
+
+/* MyButton */
+.MyButton {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Gaegu', cursive;
+  
+    /* 버튼 안에 글자가 잘려서 두 줄이 되지 않도록 함 */
+    white-space: nowrap;
+  }
+  
+  .MyButton_default {
+    background-color: transparent;
+    color: black;
+  }
+  
+  .MyButton_positive {
+    background-color: #64c964;
+    color: white;
+  }
+
+
+  /*  Header  */
+header {
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  
+  header > div {
+    display: flex;
+  }
+  
+  header .head_text {
+    width: 50%;
+    font-size: 25px;
+    justify-content: center;
+  }
+  
+  header .head_btn_left{
+    width: 25%;
+    justify-content: start;
+  }
+  
+  header .head_btn_right {
+    width: 25%;
+    justify-content: end;
+  }
+  
+  header button{
+    font-family: 'Gaegu', cursive;
+  }
+  
+
+
+
+/* DiaryItem */
+.DiaryItem {
+    background-color: #ffffff;
+
+    height: 150px;
+    border: 2px solid rgb(89, 83, 83);
+    border-radius: 12% 16% 15% 15% / 2% 1% 2% 2%;
+
+    margin-bottom: 10px;
+
+    display: flex;
+}
+
+.DiaryItem .date_subject_wrapper { 
+    border-right: 2px solid rgb(89, 83, 83);
+    border-radius: 0% 0% 3% 15% / 0% 0% 20% 2%;
+
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.DiaryItem .diary_date {
+    border-bottom: 2px solid rgb(89, 83, 83);
+    border-radius: 0% 0% 30% 10% / 0% 0% 10% 5%;
+
+    background-color:rgb(255, 246, 236);
+
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.DiaryItem .diary_subject { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+
+}
+
+.DiaryItem .diary_subject img {
+    width: 60%;
+}
+
+.DiaryItem .contents_wrapper {
+    flex-grow: 1;
+}
+
+.DiaryItem .diary_contet_top {
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+.DiaryItem .diary_achievement { 
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.DiaryItem .diary_achievement > span:first-child{
+    width: 15%;
+    margin-right: 5px;
+}
+
+.DiaryItem .diary_achievement > span:last-child {
+    width: 100%;
+    display: flex;
+}
+
+.DiaryItem .diary_achievement > span:last-child > span {
+    background-color: rgb(194, 255, 109);
+    height: 70%;
+    text-align: center;
+    font-size: 13px;
+}
+
+
+.DiaryItem .diary_contet_top > div:last-child { 
+    cursor: pointer;
+}
+
+.DiaryItem .dropdown_wrapper {
+    display: flex;
+    z-index: 10;
+}
+
+.DiaryItem .dropdown_wrapper > span:last-child {
+    margin-left: 10px;
+}
+
+.DiaryItem .diary_goal_wrapper {
+    height: 35%;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+    overflow: auto;
+}
+
+.DiaryItem .diary_gaol {
+    height: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.DiaryItem .diary_goal_wrapper span:first-child {
+    margin-right: 8px;
+    cursor: pointer;
+    
+}
+
+.DiaryItem .diary_goal_wrapper span:last-child {
+    margin-bottom: 3px;
+}
+
+.DiaryItem .diary_gaol_true {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+.DiaryItem .diary_content { 
+    padding: 0px 15px;
+}
+
+.DiaryItem .diary_content > span {
+    background-color: rgba(255, 255, 0, 0.312);
+}
+
+
+/* Drop down */
+.Dropdown {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Dropdown li {
+    list-style: none;
+}
+
+.Dropdown li:first-child {
+    padding: 10px 20px 5px 20px;
+     background-color: #e2e2e2;
+     border-top-left-radius: 8px;
+     border-top-right-radius: 8px;
+}
+
+.Dropdown li:last-child{
+    background-color: #ff6b72;
+    color: white;
+    padding: 10px 20px 5px 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
