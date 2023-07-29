@@ -29,13 +29,26 @@ const reducer = (state, action) => {
       break;
     }
     case 'TOGGLECOMPLETE' : {
-      // console.log("reducer 실행");
-      // newState = state.map((it)=> {
-      //   it.goalId === action.goalId ? {...action.data, isComplete:}
-      // })
+      newState = state.map((it)=>{
+        if(it.id === action.id) { 
+          return {
+            ...it, 
+            goal: it.goal.map((goalIt) => {
+              if(goalIt.goalId === action.goalId) {
+                return {
+                  ...goalIt, 
+                  isComplete : !goalIt.isComplete
+                };
+              }
+              return goalIt;
+            })
+          }
+        }
+        return it;
+      })
       break;
-
     }
+      
     default : return state;
   }
 
@@ -183,9 +196,9 @@ function App() {
   }
 
   // reducer dispatch - 완료 변경하기 
-  const toggleComplete = (goalId) => {
-    dispatch({type: "TOGGLECOMPLETE",goalId})
-    console.log("goalId 실행 toggle")
+  const toggleComplete = (id, goalId) => {
+    dispatch({type: "TOGGLECOMPLETE", id, goalId})
+
   }
 
 

@@ -23,7 +23,9 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
     const handleComplete = (e) => {
 
         const targetGoalId = e.target.getAttribute("data-goalid");
-        toggleComplete(targetGoalId);
+        toggleComplete(id, targetGoalId);
+
+        
     }
 
     return <div className="DiaryItem">
@@ -55,6 +57,7 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
                     <span><FontAwesomeIcon icon={faEllipsis} /></span>
                 </div>
             </div>
+
             <div className="diary_goal_wrapper">
                 {goal.map((it)=> (
                     <div className="diary_gaol">
@@ -68,6 +71,7 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
                     </div>  
                 ))}
             </div>
+
             <div className="diary_content">
                 <span>{content.length >= 35 ? content.slice(0,35) + "..." : content }</span>
             </div>
