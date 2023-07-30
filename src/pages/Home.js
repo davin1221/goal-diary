@@ -26,6 +26,7 @@ const Home = () => {
         setCurDate(new Date(curDate.getFullYear(), curDate.getMonth()-1, curDate.getDate()));
     }
 
+    // 선택한 月에 따라 리스트 변경 
     const [data, setData] = useState([]);
 
     return (

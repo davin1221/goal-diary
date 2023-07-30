@@ -15,17 +15,6 @@ body{
     box-sizing: border-box;
   }
   
-  @media (min-width:650px) {
-    .App {
-      width: 640px;
-    }
-  }
-  
-  @media (max-width:650px) {
-    .App {
-      width: 90vw;
-    }
-  }
   
   #root {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -268,3 +257,46 @@ header {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+
+
+
+@media (min-width:650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media (max-width:650px) {
+  .App {
+    width: 90vw;
+  }
+
+  .DiaryItem .diary_achievement > span:first-child {
+    width: 20%;
+  }
+}
+
+  @media (max-width:480px) {
+
+    .DiaryItem .diary_contet_top {
+      font-size: 16px;
+    }
+    .DiaryItem .diary_achievement > span:first-child {
+      width: 30%;
+    }
+
+    .DiaryItem .diary_gaol{
+      font-size: 15px;
+    }
+
+    .DiaryItem .diary_goal_wrapper {
+      display: grid;
+      grid-template-columns: repeat(1, auto);
+    }
+
+    .DiaryItem .diary_goal_wrapper{
+      padding: 3px 15px;
+      margin-bottom: 3px;
+    }
+    
+  }
