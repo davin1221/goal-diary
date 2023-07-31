@@ -50,10 +50,11 @@ body{
     color: black;
   }
   
-  .MyButton_positive {
-    background-color: #64c964;
-    color: white;
-  }
+  /* .MyButton_positive {
+    background-color: rgb(249, 238, 255);
+    border: 2px solid rgb(89, 83, 83);
+    border-radius: 12% 16% 15% 15% / 2% 1% 2% 2%;
+  } */
 
 
   /*  Header  */
@@ -88,6 +89,49 @@ header {
     font-family: 'Gaegu', cursive;
   }
   
+
+
+/* DiaryList  */
+.DiaryList { 
+}
+
+.DiaryList .menu_wrppaer{ 
+   margin: 20px 0px;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 30px;
+}
+
+.DiaryList .menu_left_col {
+  width: 40%;
+}
+
+.DiaryList .menu_right_col{
+  height: 30px;
+}
+
+.DiaryList .menu_right_col button {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ControlMenu { 
+  font-family: 'Gaegu', cursive;
+  font-size: 17px;
+  border: none;
+  background-color: transparent;
+  margin-right: 10px;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
 
 
 

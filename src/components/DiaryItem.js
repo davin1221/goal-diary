@@ -5,6 +5,9 @@ import { useContext, useState } from "react";
 import Dropdown from "./Dropdown";
 import { DiaryDispatchContext } from "../App";
 
+
+
+
 const DiaryItem = ({id, date, subject, goal, content}) => {
 
     // 날짜 변환 
