@@ -16,7 +16,10 @@ const Dropdown = ({id}) => {
 
     return <div className="Dropdown">
         <li onClick={()=>navigate(`/Edit/${id}`)}>수정</li>
-        <li onClick={handleDelete}>삭제</li>
+        <li onClick= {()=> {
+            handleDelete();
+            navigate('/', {replace:true});
+        }}> 삭제</li>
     </div>
 }
 

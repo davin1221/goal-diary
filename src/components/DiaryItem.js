@@ -1,14 +1,20 @@
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import Dropdown from "./Dropdown";
+import { DiaryDispatchContext } from "../App";
+
+// 폰트어썸
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faSquareCheck, faSquare } from "@fortawesome/free-regular-svg-icons";
-import { useContext, useState } from "react";
-import Dropdown from "./Dropdown";
-import { DiaryDispatchContext } from "../App";
 
 
 
 
 const DiaryItem = ({id, date, subject, goal, content}) => {
+
+    const navigate = useNavigate();
 
     // 날짜 변환 
     const dateStr= new Date(date)
@@ -24,11 +30,8 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
     // 체크박스 클릭 시 완료 
     const {toggleComplete} = useContext(DiaryDispatchContext);
     const handleComplete = (e) => {
-
         const targetGoalId = e.target.getAttribute("data-goalid");
         toggleComplete(id, targetGoalId);
-
-        
     }
 
     return <div className="DiaryItem">
@@ -38,7 +41,8 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
                 {`${dateStr.getMonth()+1}/${dateStr.getDate()} ${daysOfWeek[dateStr.getDay()]}`}
             </div>
             <div className="diary_subject">
-                <img src={process.env.PUBLIC_URL + `assets/${subject}.png`} />
+                <img src={process.env.PUBLIC_URL + `assets/${subject}.png`} 
+                     onClick={()=>navigate(`/Diary/${id}`)}/>
             </div>
         </div>
 
@@ -63,8 +67,8 @@ const DiaryItem = ({id, date, subject, goal, content}) => {
 
             <div className="diary_goal_wrapper">
                 {goal.map((it)=> (
-                    <div className="diary_gaol">
-                        <span key={it.goalId} onClick={handleComplete} > 
+                    <div className="diary_gaol" key={it.goalId}>
+                        <span onClick={handleComplete} > 
                             {it.isComplete ? <FontAwesomeIcon icon={faSquareCheck} data-goalid={it.goalId}/> 
                                             : <FontAwesomeIcon icon={faSquare} data-goalid={it.goalId}/> }
                         </span>

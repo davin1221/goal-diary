@@ -59,7 +59,6 @@ const DiaryList = ({diaryList}) => {
 
         // 날짜 정렬 비교함수 : 객체배열은 그냥 정렬이 안되고 비교함수를 만들어야 함 
         const compare = (a,b) => {
-            console.log(sortType)
             if(sortType === "newest") { 
                 return parseInt( b.date ) - parseInt( a.date )
             } else { 
@@ -67,40 +66,21 @@ const DiaryList = ({diaryList}) => {
             }
         }
 
-        // 주제 정렬 
-        const filterCallBack = (item) => { 
-            if(subjectType === "study") {
-                return item.subject === "study"
-            } else if(subjectType === "workout") {
-                return item.subject === "workout"
-            } else if(subjectType === "daily") {
-                return item.subject === "daily"
-            } else if(subjectType === "saving") {
-                return item.subject === "saving"
-            }
-        }
-
          // 배열을 sort 함수로 정렬 시 원본도 변하기 때문에 깊은 복사를하여 사용 
          const copyList = JSON.parse(JSON.stringify(diaryList));
-
-         
-         
 
         // 정렬된 리스트 
         // 1. 주제 정렬
         const filteredList = subjectType === "all" ? copyList : copyList.filter((item) => {
-            console.log("item: ", item.subject)
-            console.log("subjectType: ", subjectType)
-            filterCallBack(item)});
-        
-
-        console.log(filteredList)
+            if(subjectType === "study") return item.subject === "study"
+            if(subjectType === "workout") return item.subject === "workout"
+            if(subjectType === "daily") return item.subject === "daily"
+            if(subjectType === "saving") return item.subject === "saving"
+        });
 
         const sortedList = filteredList.sort(compare);
 
         return sortedList;
-
-
     }
 
     return (

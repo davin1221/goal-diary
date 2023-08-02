@@ -29,6 +29,9 @@ const reducer = (state, action) => {
       break;
     }
     case 'TOGGLECOMPLETE' : {
+      console.log("toggle: ", action.id)
+      console.log("toggle2: ", action.goalId)
+      console.log("state:" , state)
       newState = state.map((it)=>{
         if(it.id === action.id) { 
           return {
@@ -51,6 +54,8 @@ const reducer = (state, action) => {
       
     default : return state;
   }
+  
+  console.log("newState: ", newState);
 
   return newState;
 }
@@ -198,7 +203,6 @@ function App() {
   // reducer dispatch - 완료 변경하기 
   const toggleComplete = (id, goalId) => {
     dispatch({type: "TOGGLECOMPLETE", id, goalId})
-
   }
 
 
