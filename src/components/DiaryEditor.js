@@ -28,7 +28,7 @@ const DiaryEditor =() => {
 
             <div className="editor_goals">
                 <div>
-                    목표 추가 
+                    목표 추가 버튼 
                 </div>
 
                 <div>
