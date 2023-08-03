@@ -38,6 +38,7 @@ const Diary = () => {
             if(targetDiary) {
                 setData(targetDiary);
             }
+            
         } else { 
             alert("존재하지 않는 일기입니다.")
             navigate('/', {replace:true})
@@ -53,8 +54,7 @@ const Diary = () => {
     const handleComplete = (e) => {
         const targetGoalId = e.target.getAttribute("data-goalid");
         toggleComplete(id, targetGoalId);
-
-        console.log("diaryList: ", diaryList)
+        // console.log("diaryList: ", diaryList)
     }
 
     // 달성률 계산 
@@ -62,8 +62,6 @@ const Diary = () => {
     if(data) { 
         achievement = Math.floor(((data.goal.map((it)=> it.isComplete).filter((it)=> it === true).length / data.goal.length) * 100));
     }
-
-    
 
     
     if(!data) {
@@ -89,9 +87,12 @@ const Diary = () => {
         <section className="diary_content_wrapper">    
 
             <div className="diary_fisrt_line">
-                <img src={process.env.PUBLIC_URL + `/assets/${data.subject}.png`} />
-                <div className="achivement" style={{ width : `${achievement}%`}}>
-                    {achievement}%
+                <img src={process.env.PUBLIC_URL + `/assets/${data.subject}.png`} 
+                        style={{ width : "60px"}}/>
+                <div style={{ width : "100%"}}>
+                    <div className="achivement" style={{ width : `${achievement}%`}}>
+                        {achievement}%
+                    </div>
                 </div>
             </div>
 

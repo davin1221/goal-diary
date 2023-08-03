@@ -29,9 +29,10 @@ const reducer = (state, action) => {
       break;
     }
     case 'TOGGLECOMPLETE' : {
-      console.log("toggle: ", action.id)
-      console.log("toggle2: ", action.goalId)
-      console.log("state:" , state)
+
+      console.log("action.id: " , action.id);
+      console.log("action.goalId: " , action.goalId);
+
       newState = state.map((it)=>{
         if(it.id === action.id) { 
           return {
@@ -50,13 +51,12 @@ const reducer = (state, action) => {
         return it;
       })
       break;
-    }
-      
+    } 
     default : return state;
   }
-  
-  console.log("newState: ", newState);
 
+  console.log("newState: ", newState);
+  console.log("state: ", state);
   return newState;
 }
 
@@ -160,8 +160,7 @@ function App() {
 
   // State 관리 
   const [data, dispatch] = useReducer(reducer, dummyData);
-
-  // console.log("달성률 구하기: ", (dummyData[3].goal.map((it) => it.isComplete).filter((it)=> it === true).length) / dummyData[3].goal.map((it) => it.isComplete).length)
+  console.log("data State: ", data)
 
   // Id 생성
   const dataId = useRef(5);
