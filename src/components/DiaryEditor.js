@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
+import { useState } from "react";
 
 const DiaryEditor =() => {
+
+    // 작성되는 데이터를 관리할 state
+    const [data, setData] = useState();
 
     const navigate = useNavigate();
 
@@ -41,8 +45,12 @@ const DiaryEditor =() => {
             </div>
 
             <div className="editor_goals">
-                <span>목표</span>
-                <MyButton text={"+"} />
+                <div>
+                    <span>목표</span>
+                    <MyButton text={"+"} />
+                </div>
+               
+
                 <div className="editor_goals_area">
                     <ul>
                         <li>밥 먹기</li>
