@@ -55,8 +55,6 @@ const reducer = (state, action) => {
     default : return state;
   }
 
-  console.log("newState: ", newState);
-  console.log("state: ", state);
   return newState;
 }
 
@@ -65,112 +63,111 @@ export const DiaryDispatchContext = React.createContext();
 
 
 // 더미데이터 
-const dummyData = [
-  {
-    id : 1, 
-    date : 1690210800000,
-    subject : "study", 
-    goal : [
-      {
-        goalId : "study1",
-        goalContent : "영단어 20개 암기",
-        isComplete : true
-      }, 
-      {
-        goalId : "study2",
-        goalContent : "영어 일기 쓰기",
-        isComplete : true
-      }, 
-      {
-        goalId : "study3",
-        goalContent : "인강 5개 듣기",
-        isComplete : false
-      }
-    ],
-    content : "인강 5개는 무리였다. 다음엔 목표를 작게 잡아야겠다."
-  },
-  {
-    id : 2, 
-    date : 1690297200000,
-    subject : "workout", 
-    goal : [
-      {
-        goalId : "workout1",
-        goalContent : "유산소 30분",
-        isComplete : true
-      }, 
-      {
-        goalId : "workout2",
-        goalContent : "근력 50분",
-        isComplete : true
-      }, 
-      {
-        goalId : "workout3",
-        goalContent : "스트레칭 10분",
-        isComplete : true
-      }
-    ],
-    content : "유산소를 설렁설렁한 거 같다. 다음부턴 빡세게 해야겠다."
-  },
-  {
-    id : 3, 
-    date : 1690383600000,
-    subject : "daily", 
-    goal : [
-      {
-        goalId : "daily1",
-        goalContent : "물 2리터 마시기",
-        isComplete : false
-      }, 
-      {
-        goalId : "daily2",
-        goalContent : "일어나서 핸드폰 안 만지기",
-        isComplete : true
-      }, 
-      {
-        goalId : "daily3",
-        goalContent : "책상 정리하기",
-        isComplete : true
-      }
-    ],
-    content : "물 2리터를 마시는 게 너무 힘들다 ㅜㅜ"
-  },
-  {
-    id : 4, 
-    date : 1690470000000,
-    subject : "saving", 
-    goal : [
-      {
-        goalId : "saving1",
-        goalContent : "카페 안 가기",
-        isComplete : false
-      }, 
-      {
-        goalId : "saving2",
-        goalContent : "10000원 저축하기",
-        isComplete : true
-      }, 
-    ],
-    content : "오늘 너무너무너무 피곤해서 결국 카페에 갔다. 만들어서 먹어도 되는데 왜 다른 거 같지? "
-  },
-]
+// const dummyData = [
+//   {
+//     id : 1, 
+//     date : 1690210800000,
+//     subject : "study", 
+//     goal : [
+//       {
+//         goalId : "study1",
+//         goalContent : "영단어 20개 암기",
+//         isComplete : true
+//       }, 
+//       {
+//         goalId : "study2",
+//         goalContent : "영어 일기 쓰기",
+//         isComplete : true
+//       }, 
+//       {
+//         goalId : "study3",
+//         goalContent : "인강 5개 듣기",
+//         isComplete : false
+//       }
+//     ],
+//     content : "인강 5개는 무리였다. 다음엔 목표를 작게 잡아야겠다."
+//   },
+//   {
+//     id : 2, 
+//     date : 1690297200000,
+//     subject : "workout", 
+//     goal : [
+//       {
+//         goalId : "workout1",
+//         goalContent : "유산소 30분",
+//         isComplete : true
+//       }, 
+//       {
+//         goalId : "workout2",
+//         goalContent : "근력 50분",
+//         isComplete : true
+//       }, 
+//       {
+//         goalId : "workout3",
+//         goalContent : "스트레칭 10분",
+//         isComplete : true
+//       }
+//     ],
+//     content : "유산소를 설렁설렁한 거 같다. 다음부턴 빡세게 해야겠다."
+//   },
+//   {
+//     id : 3, 
+//     date : 1690383600000,
+//     subject : "daily", 
+//     goal : [
+//       {
+//         goalId : "daily1",
+//         goalContent : "물 2리터 마시기",
+//         isComplete : false
+//       }, 
+//       {
+//         goalId : "daily2",
+//         goalContent : "일어나서 핸드폰 안 만지기",
+//         isComplete : true
+//       }, 
+//       {
+//         goalId : "daily3",
+//         goalContent : "책상 정리하기",
+//         isComplete : true
+//       }
+//     ],
+//     content : "물 2리터를 마시는 게 너무 힘들다 ㅜㅜ"
+//   },
+//   {
+//     id : 4, 
+//     date : 1690470000000,
+//     subject : "saving", 
+//     goal : [
+//       {
+//         goalId : "saving1",
+//         goalContent : "카페 안 가기",
+//         isComplete : false
+//       }, 
+//       {
+//         goalId : "saving2",
+//         goalContent : "10000원 저축하기",
+//         isComplete : true
+//       }, 
+//     ],
+//     content : "오늘 너무너무너무 피곤해서 결국 카페에 갔다. 만들어서 먹어도 되는데 왜 다른 거 같지? "
+//   },
+// ]
 
 
 function App() {
 
   // State 관리 
-  const [data, dispatch] = useReducer(reducer, dummyData);
-  console.log("data State: ", data)
+  const [data, dispatch] = useReducer(reducer, []);
 
   // Id 생성
-  const dataId = useRef(5);
+  const dataId = useRef(0);
 
   // reducer dispatch - CREATE 
   const onCreate = (date, subject, goal, content) => {
       dispatch({
         type : "CREATE", 
         data : {
-          id : dataId, 
+          id : dataId.current, 
           date : new Date(date).getTime(),
           subject,
           goal,
