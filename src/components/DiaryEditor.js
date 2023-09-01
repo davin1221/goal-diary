@@ -151,7 +151,7 @@ const DiaryEditor =({isEdit, originData}) => {
                     <ul className="goal_list">
                         {goal.map((goal, index)=> {
                             return ( <li key={index}>
-                                <input value={goal}
+                                <input value={goal[index]}
                                        onChange={(e) => handleGaol(e, index)}/>
                                 <MyButton text={"X"} onClick={()=>deleteGoal(index)}/>
                             </li> )

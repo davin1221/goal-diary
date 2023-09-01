@@ -54,7 +54,6 @@ const Diary = () => {
     const handleComplete = (e) => {
         const targetGoalId = e.target.getAttribute("data-goalid");
         toggleComplete(id, targetGoalId);
-        // console.log("diaryList: ", diaryList)
     }
 
     // 달성률 계산 

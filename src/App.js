@@ -54,7 +54,7 @@ const reducer = (state, action) => {
     } 
     default : return state;
   }
-
+  console.log("newState:: ", newState);
   return newState;
 }
 

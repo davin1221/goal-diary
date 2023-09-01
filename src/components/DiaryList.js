@@ -56,7 +56,6 @@ const DiaryList = ({diaryList}) => {
     // 정렬 시 동작할 함수 
     const getProcessedDiaryList = () => {
 
-
         // 날짜 정렬 비교함수 : 객체배열은 그냥 정렬이 안되고 비교함수를 만들어야 함 
         const compare = (a,b) => {
             if(sortType === "newest") { 
